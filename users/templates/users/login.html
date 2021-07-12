@@ -1,0 +1,30 @@
+{% extends "tasks/basic.html" %} 
+{% block content %}
+<div class="content-section col-6">
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Login</legend>
+      <div class="border py-2 px-2">
+        {{ form.as_p }}
+      </div>
+    </fieldset>
+    <div class="form-group my-2">
+      <button class="btn btn-outline-info" type="submit">Sign In</button>
+    </div>
+  </form>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <div class="jumbotron">
+    <h1 style="centre">or<h4>
+    <p class="lead">Microsoft Login/SignIn</p>
+    <a class="btn btn-primary" href="/accounts/microsoft/login/?process=login" role="button">Sign-In</a>
+  </div>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+        Not Have an Account? <a class="ml-2" href="{% url 'register' %}">Sign up</a>
+    </small>
+  </div>
+
+</div>
+{% endblock content %}
