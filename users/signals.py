@@ -7,6 +7,7 @@ from .models import Profile
 @receiver(post_save,sender = User)
 def create_profile(sender,instance,created,**kwargs):
     if created:
+        w=instance.first_name
         x=instance.last_name
         y = x[0:4]
         z = x[4:6]
@@ -46,7 +47,7 @@ def create_profile(sender,instance,created,**kwargs):
                 1761: "PhD 17",
                 1661: "PhD 16",
         }
-        Profile.objects.create(user = instance,roll = str(x),batch = BAT_CHOICE[int(y)],department = DEP_CHOICE[int(z)])
+        Profile.objects.create(user = instance,name = str(w),roll = str(x),batch = BAT_CHOICE[int(y)],department = DEP_CHOICE[int(z)])
 
 
 @receiver(post_save,sender = User)
